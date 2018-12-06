@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ChosenDate.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;DayChooser&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">daychooser</a> &gt; <span class="el_source">ChosenDate.java</span></div><h1>ChosenDate.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package daychooser;
+
+import java.time.DayOfWeek;
+import static java.time.DayOfWeek.SUNDAY;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javafx.scene.image.Image;
+
+/**
+ *
+ * @author Brian
+ */
+public class ChosenDate {
+    
+    LocalDate mydate;
+    
+<span class="fc" id="L24">    public ChosenDate() {</span>
+<span class="fc" id="L25">        this.mydate = LocalDate.now();</span>
+<span class="fc" id="L26">    }</span>
+    
+<span class="nc" id="L28">    public ChosenDate(LocalDate somedate) {</span>
+<span class="nc" id="L29">        this.mydate = somedate;</span>
+<span class="nc" id="L30">    }</span>
+    
+    public Integer showNextDay() {
+<span class="fc" id="L33">        LocalDate nextday = mydate.plusDays(1);</span>
+        Integer nextstring;
+<span class="fc" id="L35">        nextstring = nextday.getDayOfMonth();</span>
+<span class="fc" id="L36">        return nextstring;</span>
+        
+    }
+    
+    public Integer showCurrentDay() {
+        Integer currentstring;
+<span class="fc" id="L42">        currentstring = mydate.getDayOfMonth();</span>
+<span class="fc" id="L43">        return currentstring;</span>
+        
+    }    
+    
+    public Integer showPrevDay() {
+<span class="fc" id="L48">        LocalDate prevday = mydate.plusDays(-1);</span>
+        Integer prevstring;
+<span class="fc" id="L50">        prevstring = prevday.getDayOfMonth();</span>
+<span class="fc" id="L51">        return prevstring;</span>
+    }    
+    
+    public DayOfWeek showDayOfWeek() {
+<span class="fc" id="L55">        return mydate.getDayOfWeek();</span>
+    }
+    
+    public Integer showShoppingDays() {
+        LocalDate xmasday;
+<span class="fc" id="L60">        xmasday = mydate.withMonth(12);</span>
+<span class="fc" id="L61">        xmasday = xmasday.withDayOfMonth(25);</span>
+<span class="fc" id="L62">        Integer daysleft = (xmasday.getDayOfYear() - mydate.getDayOfYear());</span>
+
+<span class="fc" id="L64">        int count = 0;</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        for (int x = 0; x &lt; daysleft; x++) {</span>
+            //DayOfWeek sunday = DayOfWeek.SUNDAY;
+<span class="fc bfc" id="L67" title="All 2 branches covered.">            if (mydate.plusDays(x).getDayOfWeek() == SUNDAY) {</span>
+<span class="fc" id="L68">                count++;  </span>
+            }
+        }
+<span class="fc" id="L71">        return (daysleft - count);</span>
+    }
+        public ArrayList showZodiac() {
+        
+<span class="nc" id="L75">        ArrayList&lt;LocalDate&gt; zodiacdates = new ArrayList&lt;&gt;();</span>
+      
+<span class="nc" id="L77">        LocalDate ariesstart = LocalDate.of((mydate.getYear()), 3, 21); zodiacdates.add(ariesstart);</span>
+<span class="nc" id="L78">        LocalDate taurusstart = LocalDate.of((mydate.getYear()), 4, 21); zodiacdates.add(taurusstart);</span>
+<span class="nc" id="L79">        LocalDate geministart = LocalDate.of((mydate.getYear()), 5, 21); zodiacdates.add(geministart);</span>
+<span class="nc" id="L80">        LocalDate cancerstart = LocalDate.of((mydate.getYear()), 6, 22); zodiacdates.add(cancerstart);</span>
+<span class="nc" id="L81">        LocalDate leostart = LocalDate.of((mydate.getYear()), 7, 23); zodiacdates.add(leostart);</span>
+<span class="nc" id="L82">        LocalDate virgostart = LocalDate.of((mydate.getYear()), 8, 24); zodiacdates.add(virgostart);</span>
+<span class="nc" id="L83">        LocalDate librastart = LocalDate.of((mydate.getYear()), 9, 23); zodiacdates.add(librastart);</span>
+<span class="nc" id="L84">        LocalDate scorpiostart = LocalDate.of((mydate.getYear()), 8, 24); zodiacdates.add(scorpiostart);</span>
+<span class="nc" id="L85">        LocalDate sagittariusstart = LocalDate.of((mydate.getYear()), 10, 23); zodiacdates.add(sagittariusstart);</span>
+<span class="nc" id="L86">        LocalDate capricornstart = LocalDate.of((mydate.getYear()), 12, 23); zodiacdates.add(capricornstart);</span>
+<span class="nc" id="L87">        LocalDate aquariusstart = LocalDate.of((mydate.getYear()), 1, 21); zodiacdates.add(aquariusstart);</span>
+<span class="nc" id="L88">        LocalDate piscesstart = LocalDate.of((mydate.getYear()), 2, 19); zodiacdates.add(piscesstart);</span>
+<span class="nc" id="L89">        System.out.println(zodiacdates);</span>
+<span class="nc" id="L90">        Iterator itr = zodiacdates.iterator();</span>
+        
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        while(itr.hasNext()) {</span>
+<span class="nc" id="L93">            Object element = itr.next();</span>
+<span class="nc" id="L94">            System.out.print(element + &quot; &quot;);</span>
+<span class="nc" id="L95">        }   </span>
+<span class="nc" id="L96">        return zodiacdates;</span>
+    }
+        
+    public String getZodiac() {
+<span class="fc" id="L100">        LocalDate ariesstart = LocalDate.of((mydate.getYear()), 3, 21); </span>
+<span class="fc" id="L101">        LocalDate taurusstart = LocalDate.of((mydate.getYear()), 4, 21); </span>
+<span class="fc" id="L102">        LocalDate geministart = LocalDate.of((mydate.getYear()), 5, 21); </span>
+<span class="fc" id="L103">        LocalDate cancerstart = LocalDate.of((mydate.getYear()), 6, 22); </span>
+<span class="fc" id="L104">        LocalDate leostart = LocalDate.of((mydate.getYear()), 7, 23); </span>
+<span class="fc" id="L105">        LocalDate virgostart = LocalDate.of((mydate.getYear()), 8, 24); </span>
+<span class="fc" id="L106">        LocalDate librastart = LocalDate.of((mydate.getYear()), 9, 23); </span>
+<span class="fc" id="L107">        LocalDate scorpiostart = LocalDate.of((mydate.getYear()), 8, 24); </span>
+<span class="fc" id="L108">        LocalDate sagittariusstart = LocalDate.of((mydate.getYear()), 10, 23); </span>
+<span class="fc" id="L109">        LocalDate capricornstart = LocalDate.of((mydate.getYear()), 12, 23); </span>
+<span class="fc" id="L110">        LocalDate aquariusstart = LocalDate.of((mydate.getYear()), 1, 21); </span>
+<span class="fc" id="L111">        LocalDate piscesstart = LocalDate.of((mydate.getYear()), 2, 19); </span>
+        
+<span class="pc bpc" id="L113" title="3 of 4 branches missed.">        if ((mydate.isAfter(capricornstart)) &amp;&amp; ((mydate.isBefore(aquariusstart)))) {  </span>
+<span class="nc" id="L114">            return &quot;Capricorn&quot;;</span>
+<span class="pc bpc" id="L115" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(aquariusstart)) &amp;&amp; ((mydate.isBefore(piscesstart)))) {</span>
+<span class="nc" id="L116">            return &quot;Aquarius&quot;;</span>
+<span class="pc bpc" id="L117" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(piscesstart)) &amp;&amp; ((mydate.isBefore(ariesstart)))) {</span>
+<span class="nc" id="L118">            return &quot;Pisces&quot;;</span>
+<span class="pc bpc" id="L119" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(ariesstart)) &amp;&amp; ((mydate.isBefore(taurusstart)))) {</span>
+<span class="nc" id="L120">            return &quot;Aries&quot;;</span>
+<span class="pc bpc" id="L121" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(taurusstart)) &amp;&amp; ((mydate.isBefore(geministart)))) {</span>
+<span class="nc" id="L122">            return &quot;Taurus&quot;;</span>
+<span class="pc bpc" id="L123" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(geministart)) &amp;&amp; ((mydate.isBefore(cancerstart)))) {</span>
+<span class="nc" id="L124">            return &quot;Gemini&quot;;</span>
+<span class="pc bpc" id="L125" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(cancerstart)) &amp;&amp; ((mydate.isBefore(leostart)))) {</span>
+<span class="nc" id="L126">            return &quot;Cancer&quot;;</span>
+<span class="pc bpc" id="L127" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(leostart)) &amp;&amp; ((mydate.isBefore(virgostart)))) {</span>
+<span class="nc" id="L128">            return &quot;Leo&quot;;</span>
+<span class="pc bpc" id="L129" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(virgostart)) &amp;&amp; ((mydate.isBefore(librastart)))) {</span>
+<span class="nc" id="L130">            return &quot;Virgo&quot;;</span>
+<span class="pc bpc" id="L131" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(librastart)) &amp;&amp; ((mydate.isBefore(scorpiostart)))) {</span>
+<span class="nc" id="L132">            return &quot;Libra&quot;;</span>
+<span class="pc bpc" id="L133" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(scorpiostart)) &amp;&amp; ((mydate.isBefore(sagittariusstart)))) {</span>
+<span class="nc" id="L134">            return &quot;Scorpio&quot;;</span>
+<span class="pc bpc" id="L135" title="2 of 4 branches missed.">        } else if ((mydate.isAfter(sagittariusstart)) &amp;&amp; ((mydate.isBefore(capricornstart)))) {</span>
+<span class="fc" id="L136">            return &quot;Sagittarius&quot;;</span>
+        }
+        
+<span class="nc" id="L139">        return &quot;Unknown&quot;;</span>
+    }   
+    
+    @Override
+    public String toString() {
+<span class="fc" id="L144">        return mydate.toString();</span>
+    }
+    
+    public Integer getDate() {
+<span class="fc" id="L148">        return mydate.getDayOfMonth();</span>
+    }
+    
+    public Month getMonth() {
+<span class="fc" id="L152">        return mydate.getMonth();</span>
+    }
+    
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
